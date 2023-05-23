@@ -3,7 +3,7 @@ var daily = [
   {
   id: "0",
   hour: "09",
-  time"09",
+  time:"09",
   meridiem: "am",
   remider: ""
   },
