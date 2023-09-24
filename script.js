@@ -1,94 +1,55 @@
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-var daily = [
-  {
-  id: "0",
-  hour: "09",
-  time:"09",
-  meridiem: "am",
-  remider: ""
-  },
-  {
-    id: "1",
-    hour: "10",
-    time"10",
-    meridiem: "am",
-    remider: ""
-  },
-  {
-    id: "2",
-    hour: "11",
-    time"11",
-    meridiem: "am",
-    remider: ""
-  },
-  {
-    id: "3",
-    hour: "12",
-    time"12",
-    meridiem: "pm",
-    remider: ""
-  },
-  {
-    id: "4",
-    hour: "01",
-    time"13",
-    meridiem: "pm",
-    remider: ""
-  },
-  {
-    id: "5",
-    hour: "02",
-    time"14",
-    meridiem: "pm",
-    remider: ""
-  },
-  {
-    id: "6",
-    hour: "03",
-    time"15",
-    meridiem: "pm",
-    remider: ""
-  },
-  {
-    id: "7",
-    hour: "04",
-    time"16",
-    meridiem: "pm",
-    remider: ""
-  },
-  {
-    id: "8",
-    hour: "05",
-    time"17",
-    meridiem: "pm",
-    remider: ""
-  },
-  {
-    id: "9",
-    hour: "06",
-    time"18",
-    meridiem: "pm",
-    remider: ""
-  },
-]
+// function that executes all the functions for the work-day-scheduler
+$(function () {
+  // variables for todays date and for the save button
+  var todayDate = dayjs();
+  var saveButton = $('.saveBtn')
 
-function getHeaderDate(){
-  var currentHeaderDate = moment().format('dddd, MMMM Do');
-  $("currentDay").text(currentHeaderDate);
-}
-    
-function saveReminders(){
-  locakStorage.setItem("daily",Json.stringify(daily));
-}
-function displayReminders(){
-  daily.forEach(function (_thishour){
-    $(`#${_thishour.id}`).val(_thishour.remider);
-  })
-}
+  // Click listener, that get's the id of each time block and the userInput and saves it in the localStorage
+  saveButton.on('click', function(event){
+    event.preventDefault();
+    var timeBlockId = $(this).closest('.time-block').attr('id');
+    var eventDescr = $(this).siblings('.description').val();
+    localStorage.setItem(timeBlockId, eventDescr);
 
-var date = new Date();
+    // show the saved-message each time the savedButton is clicked
+    var savedMessage = $('.saved-message');
+    savedMessage.removeAttr('display').show();
 
-	var current_date = date.getFullYear()+(date.getMonth()+1)+date.getDate();
-	var current_time = date.getHours()+date.getMinutes()+date.getSeconds();
-	var date_time = current_date+current_time;	
-	document.getElementById("p1").innerHTML = date_time;
+    // shows the message for a total of 5 seconds
+    var messageDuration = setInterval(function() {
+    clearInterval(messageDuration);
+    savedMessage.hide();
+    },5000);
+  });
+
+  // classes past, present and future will be removed and added to each time block, based on the current hour
+  // runs a loop through each time block
+  $('.time-block').each(function() {
+    // parses Integer for hour in the timeBlockId and compares it to the current hour also parsed as Integer
+    var timeBlockIdHour = parseInt($(this).attr('id').split('-')[1])
+    var currentHour = parseInt(dayjs().format('H'));
+
+
+  // if condition that removes and applies the classes for past, present and future, based on current hour
+  if (timeBlockIdHour < currentHour) {
+    $(this).removeClass('future present').addClass('past');
+  } else if (timeBlockIdHour === currentHour) {
+    $(this).removeClass('past future').addClass('present');
+  } else {
+    $(this).removeClass('past present').addClass('future');
+  }
+  });
+  
+
+
+  // Loop that loops through each time-block and gets id and adds the eventDescription based on the id
+  $('.time-block').each(function() {
+    var timeBlockId = $(this).attr('id');
+    var eventDescr = localStorage.getItem(timeBlockId);
+    $(this).find('.description').val(eventDescr);
+  });
+
+
+  //display the current date in the header of the page.
+  $('#currentDay').text(todayDate.format('dddd, MMMM D'))
+});
