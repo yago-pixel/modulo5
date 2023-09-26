@@ -1,26 +1,48 @@
-## Work Day Scheduler
-We are creating a nice performace Sheduler stuff for every one who has a company to help you guys to follow the best way to make all of itens on time.
-I hope this amazing project going to be a nice way to help and if you need more stuff to add, just let us now and we can do that.
+# My Work Day Scheduler
+
+## Description
+
+Welcome to your Work Day Scheduler.
+Here you can save all your events and appointments for your work day in the standard business hours.
+This project deepened my knowledge on how to apply third-party APIs to your dynamic webpage.
+Enjoy using this web app to save your important events for your workday!
+
+Here is a link to the Work Day Scheduler: [Link to Work Day Scheduler](https://github.com/yago-pixel/modulo5.git)
+
+## Installation
+
+N/A
+
+## Usage
+
+When you open the Work Day Scheduler, you will find the current date and rows of time blocks from 9AM-5PM, with save buttons on the side.
+
+![work-day-scheduler](![screenshot](<Screenshot 2023-09-25 200941.png>))
+
+The colors of the time blocks show you which events are in the past: grey, present: red, and future: green.
+
+![timeblock-colors](https://github.com/yago-pixel/my-work-day-scheduler/assets/129299589/a18333ed-2029-4eba-908a-f1daae7d22a9)
+
+In those you can also enter your events or appointments for each time block.
+
+![event](https://github.com/yago-pixel/my-work-day-scheduler/assets/129299589/d5d1fa35-de0d-4cda-83ad-6eb0a63dbad3)
+
+Once you entered you event Description, you can press on the save Button on the right of the time block, which saves the event.
+
+![save-button](https://github.com/yago-pixel/my-work-day-scheduler/assets/129299589/9daa8821-ba8b-4903-af35-bbd6dbe1e096)
+
+On the top, you will see a message displayed, which confirms that the entered event was saved in the localStorage.
+
+![local-storage](https://github.com/yago-pixelmy-work-day-scheduler/assets/129299589/2f863cbc-e751-4d65-a9f6-c1f8d25abc24)
+
+That's all! Now you can comfortably schedule your work day!
 
 
 
+## Credits
 
+Starter code by [coding-boot-camp](https://github.com/coding-boot-camp/crispy-octo-meme)
 
-## User Story
-AS AN employee with a busy schedule
-I WANT to add important events to a daily planner
-SO THAT I can manage my time effectively
-Acceptance Criteria
-GIVEN I am using a daily planner to create a schedule
-WHEN I open the planner
-THEN the current day is displayed at the top of the calendar
-WHEN I scroll down
-THEN I am presented with time blocks for standard business hours
-WHEN I view the time blocks for that day
-THEN each time block is color-coded to indicate whether it is in the past, present, or future
-WHEN I click into a time block
-THEN I can enter an event
-WHEN I click the save button for that time block
-THEN the text for that event is saved in local storage
-WHEN I refresh the page
-THEN the saved events persist
+## License
+
+MIT Licensed Product
