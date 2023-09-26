@@ -17,7 +17,7 @@ N/A
 
 When you open the Work Day Scheduler, you will find the current date and rows of time blocks from 9AM-5PM, with save buttons on the side.
 
-![work-day-scheduler](![screenshot](<Screenshot 2023-09-25 200941.png>))
+![work-day-scheduler](https://github.com/yago-pixel/my-work-day-scheduler/assets/129299589/c38c9297-8b39-457e-9c0f-f4b0b8051c2e)
 
 The colors of the time blocks show you which events are in the past: grey, present: red, and future: green.
 
